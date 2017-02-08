@@ -3,11 +3,13 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SearchResultPage } from '../pages/search-result/search-result';
+import { SearchBar } from '../pages/search/search';
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SearchResultPage
+    SearchResultPage,
+    SearchBar
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -16,7 +18,8 @@ import { SearchResultPage } from '../pages/search-result/search-result';
   entryComponents: [
     MyApp,
     HomePage,
-    SearchResultPage
+    SearchResultPage,
+    SearchBar
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

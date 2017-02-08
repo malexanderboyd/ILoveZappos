@@ -16,7 +16,7 @@
 
 
 <ion-content padding>
-
+<searchBar></searchBar>
 
 <ion-list class="mdl-grid">
 
@@ -29,9 +29,8 @@
     <h3 id="productPrice">{{ result.price }}</h3>
   </div>
   <div class="mdl-card__actions mdl-card--border">
-  <button (click)="addToCart()" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent addCartButton">
-    <ion-icon name="cart" class="cartIcon"></ion-icon>  Add to Cart
-  </button>
+  <button (click)="addToCart()" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="addCartButton">
+    <ion-icon name="cart" class="cartIcon"></ion-icon><span id="addCartText"> Add To Cart</span></button>
   </div>
   </ion-card>
 

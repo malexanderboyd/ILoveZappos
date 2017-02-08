@@ -27,9 +27,9 @@ export class SearchResultPage {
 
   addToCart()
   {
-    $(".cartIcon").addClass("animated jello");
-    $(".addCartButton").css("background-color", "#4caf50");
-    //$(".addCartButton").html($(".addCartButton").html + "Added To Cart!");
+    $("#cartIcon").addClass("animated jello");
+    $("#addCartButton").css("background-color", "#4caf50");
+    $("#addCartText").html("Added to Cart!");
   }
 
 }
