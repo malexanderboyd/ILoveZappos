@@ -1,20 +1,12 @@
 page-home {
 
-#searchButton {
-  min-width: none;
-  width: 50px !important;
-  align-items: center;
-  text-align: center;
+#mainLogo
+{
+  max-height: 600px;
+  max-width: 800px;
+  min-height: 300px;
+  min-width: 400px;
+  background-color: rgb(255,255,255);
 }
-
-#searchBarContainer {
-  width: 100%;
-  align-items: center;
-  display: inline-block;
-  margin: auto;
-}
-
-
-
 
 }

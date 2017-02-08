@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { ZapposAPI } from '../../providers/zappos-api';
 import { SearchResultPage } from '../search-result/search-result';
+import { NavController } from 'ionic-angular';
 @Component({
   selector: 'searchBar',
   templateUrl: 'search.html',
@@ -10,9 +10,8 @@ import { SearchResultPage } from '../search-result/search-result';
 export class SearchBar {
   public searchResults : any;
   public searchTerm: string;
+  innerHtml:string;
   constructor(public navCtrl: NavController, public zapposApi: ZapposAPI) {
-    this.searchResults = null;
-    this.searchTerm = null;
   }
 
 
@@ -33,7 +32,7 @@ export class SearchBar {
       this.navCtrl.push(SearchResultPage, {
         searchTerm: this.searchTerm,
         searchResults: this.searchResults
-      });
+    });
     }
 
 
