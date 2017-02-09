@@ -1,7 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>{{ searchTerm.toUpperCase() }} Search Results</ion-title>
+  <ion-navbar style="display:flex;">
+    <ion-title>I <ion-icon name="heart"></ion-icon> Zappos</ion-title>
+    <ion-icon style="float:right;"name="cart"></ion-icon>(<span id="cartCounter"></span>)
   </ion-navbar>
 
 </ion-header>
@@ -11,19 +12,111 @@
 
 <ion-content padding>
 
-<ion-list class="mdl-grid">
-<ion-card class="mdl-cell mdl-cell--2-col" *ngFor="let result of searchResults">
-        <img id="productImg" src='{{result.thumbnailImageUrl}}' />
+  <p>{{ searchTerm.toUpperCase() }} Search Results...</p>
+
+  <p id="introText">I <ion-icon name="heart"></ion-icon> Zappos is a tool designed for quick snapshots of Zappos products.
+
+    Click any product's photo and you'll be sent to the corresponding product's details page.
+  </p>
+
+  <ion-searchbar (ionInput)="getSearch($event)" (ionCancel)="resetPage($event)" [debounce]="500" placeholder="Filter...(Nike,Funky,etc)"></ion-searchbar>
+
+
+<ion-list class="mdl-grid" style="display:flex;">
+<ion-card class="mdl-cell mdl-cell--2-col" *ngFor="let result of searchResultsSplitInit">
+        <a href="{{ result.productUrl }}"><img id="productImg" src='{{result.thumbnailImageUrl}}' /></a>
   <div class="mdl-card__supporting-text">
-    <h2 id="productName">{{ result.productName }}</h2> -->
-    <br/>
-    <h3 id="productPrice">{{ result.price }}</h3>
+    <div class="mdl-cell mdl-cell-2--col">
+    <h2 class="resultTextMed">{{ result.price }}</h2>
+    </div>
+    <div class="mdl-cell mdl-cell-2--col">
+    <h2 class="resultText">{{ result.productName }}</h2>
+  </div>
   </div>
   <div class="mdl-card__actions mdl-card--border">
   <button (click)="addToCart($event)" cartStatus="out" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="addCartButton">
     Add To Cart</button>
   </div>
-  </ion-card>
+</ion-card>
+
+
+
+<ng-container *ngIf="loadMoreCounter >= 1">
+  <ion-card class="mdl-cell mdl-cell--2-col" *ngFor="let result of searchResultsSplit1">
+          <a href="{{ result.productUrl }}"><img id="productImg" src='{{result.thumbnailImageUrl}}' /></a>
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultTextMed">{{ result.price }}</h2>
+      </div>
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultText">{{ result.productName }}</h2>
+    </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+    <button (click)="addToCart($event)" cartStatus="out" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="addCartButton">
+      Add To Cart</button>
+    </div>
+    </ion-card>
+</ng-container>
+
+<ng-container *ngIf="loadMoreCounter >= 2">
+  <ion-card class="mdl-cell mdl-cell--2-col" *ngFor="let result of searchResultsSplit2">
+          <a href="{{ result.productUrl }}"><img id="productImg" src='{{result.thumbnailImageUrl}}' /></a>
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultTextMed">{{ result.price }}</h2>
+      </div>
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultText">{{ result.productName }}</h2>
+    </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+    <button (click)="addToCart($event)" cartStatus="out" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="addCartButton">
+      Add To Cart</button>
+    </div>
+    </ion-card>
+</ng-container>
+
+<ng-container *ngIf="loadMoreCounter >= 3">
+  <ion-card class="mdl-cell mdl-cell--2-col" *ngFor="let result of searchResultsSplit3">
+          <a href="{{ result.productUrl }}"><img id="productImg" src='{{result.thumbnailImageUrl}}' /></a>
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultTextMed">{{ result.price }}</h2>
+      </div>
+      <div class="mdl-cell mdl-cell-2--col">
+      <h2 class="resultText">{{ result.productName }}</h2>
+    </div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+    <button (click)="addToCart($event)" cartStatus="out" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent" id="addCartButton">
+      Add To Cart</button>
+    </div>
+    </ion-card>
+</ng-container>
+
+<ng-container *ngIf="loadMoreCounter === 4">
+  <div class="mdl-cell mdl-cell-4--col">
+  <p>We're sorry! We're all out of results! However, <a href="http://www.zappos.com/">Zappos</a> has the rest! Check them out!</p>
+  </div>
+</ng-container>
+
+
+<button style="width:100%;position:relative;
+bottom:0;" *ngIf="loadMoreCounter <= 3" (click)="loadMore()" cartStatus="out" class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--colored">
+  Load More
+</button>
+
+
+
+
+
 </ion-list>
+
+<div *ngIf="cowLevel == true">
+  <p>There is no cow level</p>
+  <img src="assets/cowlevel.jpg" [width]=600 height=[800] />
+</div>
+
 
 </ion-content>

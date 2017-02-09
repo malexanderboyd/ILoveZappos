@@ -24,7 +24,7 @@ public data: any;
     // then on the response, it'll map the JSON data to a parsed JS object.
     // Next, we process the data and resolve the promise with the new data.
     console.log("searching for term: " + searchTerm);
-    let requestString = "https://api.zappos.com/Search?term=&key=b743e26728e16b81da139182bb2094357c31d331".replace("term=", "term=" + searchTerm);
+    let requestString = "https://api.zappos.com/Search?limit=500&term=&key=b743e26728e16b81da139182bb2094357c31d331".replace("term=", "term=" + searchTerm);
     this.http.get(requestString)
     .map(res => res.json())
       .subscribe(data => {
