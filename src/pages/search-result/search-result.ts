@@ -152,6 +152,7 @@ export class SearchResultPage {
 
   addToCart(event)
   {
+    var cartBtnNum = <HTMLElement> document.getElementById("cartCounter");
     var buttnClicked = <HTMLElement> event.srcElement;
     if(buttnClicked.className.indexOf("cartIcon") != -1) // user clicked cart icon, set back to button to make changes.
     {
@@ -167,13 +168,19 @@ export class SearchResultPage {
     buttnClicked.innerHTML = "Added To Cart!";
     buttnClicked.style.backgroundColor = "#4caf50";
     buttnClicked.setAttribute("cartStatus", "in");
+    cartBtnNum.innerHTML =  ""+(parseInt(cartBtnNum.innerHTML, 10) + 1);
     }
     else
     {
       buttnClicked.innerHTML = "Add To Cart!";
       buttnClicked.style.backgroundColor = "#536dfe"; // dodger blue (main color themed)
       buttnClicked.setAttribute("cartStatus", "out");
+      cartBtnNum.innerHTML =  ""+(parseInt(cartBtnNum.innerHTML, 10) - 1);
     }
+
+
+
+
   }
 
 }

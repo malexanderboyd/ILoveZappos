@@ -1,8 +1,10 @@
 <ion-header>
 
-  <ion-navbar style="display:flex;">
+  <ion-navbar style="display:inline-flex;">
     <ion-title>I <ion-icon name="heart"></ion-icon> Zappos</ion-title>
-    <ion-icon style="float:right;"name="cart"></ion-icon>(<span id="cartCounter"></span>)
+    <div style="float:right;" id="mdl-cell mdl-cell-1--col">
+    <ion-icon name="cart"></ion-icon>(<span id="cartCounter">0</span>)
+    </div>
   </ion-navbar>
 
 </ion-header>
@@ -14,12 +16,12 @@
 
   <p>{{ searchTerm.toUpperCase() }} Search Results...</p>
 
-  <p id="introText">I <ion-icon name="heart"></ion-icon> Zappos is a tool designed for quick snapshots of Zappos products.
+  <p id="introText">I <ion-icon display="inline;"name="heart"></ion-icon> Zappos is a tool designed for quick snapshots of Zappos products.
 
     Click any product's photo and you'll be sent to the corresponding product's details page.
   </p>
 
-  <ion-searchbar (ionInput)="getSearch($event)" (ionCancel)="resetPage($event)" [debounce]="500" placeholder="Filter...(Nike,Funky,etc)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getSearch($event)" (ionCancel)="resetPage($event)" [debounce]="500" placeholder="Filter...(Nike, Funky, etc)"></ion-searchbar>
 
 
 <ion-list class="mdl-grid" style="display:flex;">
